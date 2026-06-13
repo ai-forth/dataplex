@@ -23,6 +23,7 @@
   "outputs": [
     "v(VIN_MAIN)",
     "v(VMASTER)",
+    "v(RESET_HOLD)",
     "v(GCORE)",
     "v(GIO)",
     "v(GAN)",
@@ -103,6 +104,33 @@
         "0"
       ],
       "value": "60"
+    },
+    {
+      "id": "RSTCHG",
+      "type": "resistor",
+      "nodes": [
+        "VMASTER",
+        "RESET_HOLD"
+      ],
+      "value": "180k"
+    },
+    {
+      "id": "RSTC",
+      "type": "capacitor",
+      "nodes": [
+        "RESET_HOLD",
+        "0"
+      ],
+      "value": "0.1u"
+    },
+    {
+      "id": "RSTBLEED",
+      "type": "resistor",
+      "nodes": [
+        "RESET_HOLD",
+        "0"
+      ],
+      "value": "1Meg"
     },
     {
       "id": "GPULLCORE",

@@ -17,6 +17,9 @@ CBULK VIN_MAIN 0 22u
 RMASTERPATH VIN_MAIN VMASTER 0.04
 CMASTERC VMASTER 0 10u
 RMASTERLOAD VMASTER 0 60
+RRSTCHG VMASTER RESET_HOLD 180k
+CRSTC RESET_HOLD 0 0.1u
+RRSTBLEED RESET_HOLD 0 1Meg
 RGPULLCORE VDRV GCORE 47k
 MGCLAMPCORE GCORE DISABLE 0 0 DMN5L06DMK_CLAMP
 MPASSCORE VIN_MAIN GCORE VCORE 0 FDS6574A_SW
@@ -39,8 +42,8 @@ RANLOAD VAN 0 120
 .control
 set filetype=ascii
 tran 20u 12m
-print v(VIN_MAIN) v(VMASTER) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
-wrdata /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/outputs/sim.dat v(VIN_MAIN) v(VMASTER) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
+print v(VIN_MAIN) v(VMASTER) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
+wrdata /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/outputs/sim.dat v(VIN_MAIN) v(VMASTER) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
 quit
 .endc
 

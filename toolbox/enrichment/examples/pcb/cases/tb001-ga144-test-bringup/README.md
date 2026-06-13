@@ -46,6 +46,7 @@ This case intentionally abstracts the board into four electrical loads:
 * one switched `V1P8-Core/UUT` branch
 * one switched `V1P8-IO/UUT` branch
 * one switched `V1P8-Analog/UUT` branch
+* one master-side RC `RESET_HOLD` proxy derived from the always-on branch
 
 Control assumptions:
 
@@ -55,6 +56,8 @@ Control assumptions:
   branch gates low before enable release
 * `FDS6574A` behavior is represented as the stronger branch-pass element
 * branch gates are released after startup so the UUT domains can rise
+* a simple RC node `RESET_HOLD` stands in for the idea that test traffic should
+  only begin after the master side has had time to settle
 
 ## Expected Good Behavior
 
@@ -67,6 +70,8 @@ true in this abstraction:
   below it
 * enabling the UUT branches does not drag the master-side branch so far down
   that the page-1 controller, SRAM, or flash would obviously brown out
+* the reset-hold proxy should rise after the master branch is healthy rather
+  than racing ahead of the supply
 
 ## Current Run Result
 
@@ -77,6 +82,7 @@ By the end of the transient:
 
 * `VIN_MAIN` settles at about `1.794 V`
 * the always-on master-side branch `VMASTER` settles at about `1.793 V`
+* the RC reset proxy `RESET_HOLD` rises to about `1.52 V`
 * `V1P8-Core/UUT` settles at about `1.770 V`
 * `V1P8-IO/UUT` settles at about `1.784 V`
 * `V1P8-Analog/UUT` settles at about `1.787 V`
@@ -86,6 +92,9 @@ Current interpretation:
 
 * the board can be plausibly understood as keeping the page-1 test-master side
   alive while enabling the UUT-side branches afterward
+* the reset proxy rises after the master branch is established, which is
+  directionally consistent with a board that should defer test traffic until
+  bring-up settles
 * the heaviest UUT branch in this abstraction is the core rail, and it is the
   first place where marginal headroom shows up
 * nothing in this run suggests an obvious catastrophic brownout of the
@@ -115,5 +124,5 @@ cd toolbox/enrichment
 * tighten `FDS6574A` and `DMN5L06DMK-AB` model parameters from the local
   datasheets
 * split the master-side branch into explicit GA144, SRAM, and SPI flash loads
-* add a reset-hold abstraction so domain settle time can be compared against
-  test-start timing
+* tune the reset-hold abstraction so domain settle time can be compared against
+  a more realistic test-start threshold
