@@ -87,12 +87,20 @@ Create:
 
 * `bom/tb001/bom-overview.md`
 * `bom/tb001/critical-parts.md`
+* `components/tb001/fds6574.md`
+* `components/tb001/dmn5l06dmk-ab.md`
+* `components/tb001/max3218eap.md`
+* `component-uses/tb001/q1-fds6574-page4.md`
+* `component-uses/tb001/q1-q5-q7-q8-q10-q11-fds6574-page5.md`
+* `component-uses/tb001/q2-dmn5l06dmk-ab-page4.md`
+* `component-uses/tb001/q3-q4-q6-q9-dmn5l06dmk-ab-page5.md`
 
 Suggested sources:
 
 * `migration/baseline/tb001-bom-v106d.csv`
 * `migration/baseline/tb001-bom-v106d-notes.md`
 * `migration/baseline/BOM_GA144_prod_test_V106d.pdf`
+* page-level markdown derived above
 
 ## Manufacturing
 
@@ -159,11 +167,11 @@ If we want a practical starting slice, create these first:
 2. `schematics/tb001/pages/page-01-power-control.md`
 3. `schematics/tb001/pages/page-02-*.md`
 4. `schematics/tb001/subsystems/power-control.md`
-5. `bom/tb001/bom-overview.md`
-6. `bom/tb001/critical-parts.md`
-7. `manufacturing/tb001/production-package.md`
-8. `test/tb001/production-test.md`
-9. `revisions/tb001/revision-history.md`
+5. `components/tb001/fds6574.md`
+6. `components/tb001/dmn5l06dmk-ab.md`
+7. `component-uses/tb001/q1-q5-q7-q8-q10-q11-fds6574-page5.md`
+8. `bom/tb001/bom-overview.md`
+9. `manufacturing/tb001/production-package.md`
 10. `revisions/tb001/redraw-risks.md`
 
 That set is enough to start asking meaningful questions about design fitness,

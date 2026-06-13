@@ -141,6 +141,70 @@ Recommended fields:
 * `critical_parts`
 * `selection_rationale`
 
+### `component`
+
+Represents a unique manufacturer part number with manufacturer-grounded
+characteristics.
+
+Recommended fields:
+
+* `manufacturer`
+* `mpn`
+* `package`
+* `datasheet_status`
+* `model_status`
+* `pinout_status`
+* `operating_limits_status`
+
+Recommended body focus:
+
+* manufacturer identity and ordering information
+* known package and pin-count facts
+* authoritative electrical characteristics from the datasheet
+* available simulation model assets
+* explicit separation between sourced facts and unresolved placeholders
+
+### `component-use`
+
+Represents how a unique component is used on a specific board or page.
+
+Recommended fields:
+
+* `reference_designators`
+* `board_context`
+* `page_context`
+* `use_role`
+* `related_component`
+* `simulation_relevance`
+
+Recommended body focus:
+
+* where the part appears in the design
+* what role it likely plays in that location
+* which assumptions are board-specific rather than manufacturer facts
+* what must be verified before simulation or release decisions trust the part
+
+### `simulation-model`
+
+Represents the actual electrical abstraction used in simulation.
+
+Recommended fields:
+
+* `related_component`
+* `model_kind`
+* `model_source`
+* `fidelity_level`
+* `intended_use`
+* `known_limitations`
+
+Recommended body focus:
+
+* whether the model came from the manufacturer, a fitted approximation, or a
+  placeholder
+* what parameters were preserved
+* what was intentionally simplified away
+* what simulation conclusions are valid or unsafe with that model
+
 ### `bom`
 
 Represents a board-level or subsystem-level bill of materials view.
@@ -258,6 +322,8 @@ For a first pass, create at least:
 * 3-8 `subsystem`
 * 1 `bom`
 * 1-3 `manufacturing-note`
+* 2-5 `component`
+* 2-5 `component-use`
 * 1-3 `test-procedure`
 * 0-N `risk`
 

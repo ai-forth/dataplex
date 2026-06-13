@@ -9,6 +9,17 @@ evidence/
       board-overview.md
       revisions/
       risks/
+  components/
+    tb001/
+      fds6574.md
+      dmn5l06dmk-ab.md
+      max3218eap.md
+  component-uses/
+    tb001/
+      q1-fds6574-page4.md
+      q1-q5-q7-q8-q10-q11-fds6574-page5.md
+      q2-dmn5l06dmk-ab-page4.md
+      q3-q4-q6-q9-dmn5l06dmk-ab-page5.md
   schematics/
     tb001/
       pages/
@@ -35,6 +46,7 @@ evidence/
       power-sequencing.md
       signal-integrity.md
       thermal.md
+      models/
   revisions/
     tb001/
       rev-106d.md
@@ -117,6 +129,25 @@ Power-focused artifacts:
 * source/load mapping
 * protection and decoupling rationale
 
+### `components/`
+
+Use for manufacturer-part records:
+
+* one file per unique MPN
+* package and pinout facts
+* datasheet-derived operating characteristics
+* vendor model availability
+* explicit confidence and source status
+
+### `component-uses/`
+
+Use for board-specific interpretation of those parts:
+
+* reference designator groupings
+* page and subsystem context
+* likely electrical role in this design
+* simulation relevance and current assumptions
+
 ### `schematics/interfaces/`
 
 Connector and signal-boundary artifacts:
@@ -143,6 +174,9 @@ Use for bring-up, validation, and production procedures.
 
 Use for simulation intent and outcomes, even if the actual simulator assets live
 elsewhere.
+
+Place model-specific notes under `simulation/<board>/models/` when a simulation
+abstraction needs to be tracked separately from the manufacturer part record.
 
 ### `revisions/`
 

@@ -54,29 +54,35 @@ That is enough to reason about:
 * whether the gate node is likely too weak or too slow
 * whether the provisional load makes the branch collapse or ring
 
-## First Run Result
+## Current Run Result
 
-The first completed `ngspice` run produced a useful negative result:
+The current `ngspice` run produces a partial-turn-on result:
 
 * `EN` rises to `3.3 V`
-* `PGATE` is pulled down to about `11 mV`
-* `VOUT` does **not** rise and remains effectively at `0 V`
+* `PGATE` is pulled down to about `0.2 mV`
+* `VOUT` rises from `0 V` to about `1.10 V`
+* the branch therefore turns on partially, but still does not reach the full
+  `1.8 V` source level
 
 Current interpretation:
 
-* the control side of the hypothesis is at least directionally plausible
-* the switched-power side of the hypothesis is still wrong or incomplete
+* the control side of the hypothesis looks coherent
+* the switched-power side is plausible enough to pass current
+* the present single-pass interpretation may still under-represent the true
+  strength or structure of the page-5 switching family
 
-Most likely reasons:
+Most likely reasons for the limited output level:
 
-* `FDS6574` is not behaving like the simple PMOS pass element assumed here
-* the page-5 branch likely needs additional series or return structure that is
-  absent from this first slice
-* the true source/drain or device-family interpretation may differ from the
-  provisional high-side switch model
+* the unresolved `FDS6574` family may represent a stronger or composite switch
+  than the single-pass abstraction used here
+* the page-5 branch may include additional structure not yet modeled in this
+  minimal slice
+* the current simplified device and load assumptions may still be too weak or
+  too incomplete for a realistic full-rail result
 
-That means the case is already doing useful work: it tells us the current
-page-5/page-4 abstraction is not yet electrically self-consistent.
+That means the case is now useful in a more specific way: it no longer says the
+topology is simply dead wrong, but it does suggest the baseline single-pass
+model is not yet strong enough.
 
 ## Known Limitations
 
@@ -125,6 +131,6 @@ Most likely next comparison:
 * next hypothesis: `FDS6574` participates in a different switching arrangement
   or requires additional branch structure that is absent from this slice
 
-That side-by-side comparison is the fastest next move because the present run
-already shows the control node responding while the output branch remains stuck
-off.
+That comparison has now been run. The stronger-bank hypothesis improves the
+representative branch from about `1.10 V` to about `1.43 V`, which suggests the
+baseline single-pass interpretation is likely too weak.

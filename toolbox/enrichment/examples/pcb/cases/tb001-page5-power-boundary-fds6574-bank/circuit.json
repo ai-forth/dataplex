@@ -1,0 +1,132 @@
+{
+  "title": "tb001-page5-power-boundary-fds6574-bank",
+  "description": "Alternate TB001 page-5/page-4 boundary model: the page-4-derived control signal still drives a DMN-class NMOS gate pull-down, but the unresolved FDS6574 family is treated as a stronger composite PMOS pass bank rather than a single pass element.",
+  "sourceSvg": "/home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-page5-power-boundary-fds6574-bank/input/source.svg",
+  "assumptions": [
+    "This case keeps the same control-side abstraction as the baseline page-5 case so the main comparison is in the interpretation of the FDS6574 family.",
+    "FDS6574 is treated here as a stronger composite PMOS pass bank rather than a single PMOS element.",
+    "DMN5L06DMK-AB is still treated as an NMOS gate-pull device controlled from the page-4 boundary.",
+    "The upstream source is modeled as a 1.8 V rail with small source impedance and local bulk capacitance.",
+    "The downstream load still stands in for one representative UUT-facing branch with connector and local capacitance lumped together.",
+    "This is not a claim of exact device count or exact pin mapping; it is a comparison hypothesis for whether the unresolved FDS6574 family behaves more like a stronger switched bank than a single weak pass element."
+  ],
+  "analyses": [
+    {
+      "kind": "tran",
+      "command": "tran 20u 12m"
+    }
+  ],
+  "outputs": [
+    "v(VIN)",
+    "v(EN)",
+    "v(PGATE)",
+    "v(VOUT)"
+  ],
+  "components": [
+    {
+      "id": "MAIN1P8",
+      "type": "vsource",
+      "nodes": [
+        "VIN_SRC",
+        "0"
+      ],
+      "value": "DC 1.8"
+    },
+    {
+      "id": "CTRL",
+      "type": "vsource",
+      "nodes": [
+        "EN",
+        "0"
+      ],
+      "value": "PULSE(0 3.3 1m 20u 20u 4m 8m)"
+    },
+    {
+      "id": "SRCPATH",
+      "type": "resistor",
+      "nodes": [
+        "VIN_SRC",
+        "VIN"
+      ],
+      "value": "0.08"
+    },
+    {
+      "id": "BULKIN",
+      "type": "capacitor",
+      "nodes": [
+        "VIN",
+        "0"
+      ],
+      "value": "10u"
+    },
+    {
+      "id": "GPULL",
+      "type": "resistor",
+      "nodes": [
+        "PGATE",
+        "VIN"
+      ],
+      "value": "100k"
+    },
+    {
+      "id": "DRV",
+      "type": "nmos",
+      "nodes": [
+        "PGATE",
+        "EN",
+        "0",
+        "0"
+      ],
+      "model": "GENERIC_NMOS"
+    },
+    {
+      "id": "PASSA",
+      "type": "pmos",
+      "nodes": [
+        "VOUT",
+        "PGATE",
+        "VIN",
+        "VIN"
+      ],
+      "model": "GENERIC_PMOS"
+    },
+    {
+      "id": "PASSB",
+      "type": "pmos",
+      "nodes": [
+        "VOUT",
+        "PGATE",
+        "VIN",
+        "VIN"
+      ],
+      "model": "GENERIC_PMOS"
+    },
+    {
+      "id": "LOAD",
+      "type": "resistor",
+      "nodes": [
+        "VOUT",
+        "0"
+      ],
+      "value": "36"
+    },
+    {
+      "id": "CLOAD",
+      "type": "capacitor",
+      "nodes": [
+        "VOUT",
+        "0"
+      ],
+      "value": "22u"
+    },
+    {
+      "id": "BLEED",
+      "type": "resistor",
+      "nodes": [
+        "VOUT",
+        "0"
+      ],
+      "value": "2k"
+    }
+  ]
+}
