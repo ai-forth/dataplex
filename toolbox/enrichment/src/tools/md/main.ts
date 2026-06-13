@@ -32,4 +32,7 @@ async function main() {
   await runServer(fileset);
 }
 
-main();
+main().catch((error: Error) => {
+  console.error(error.message);
+  process.exit(1);
+});

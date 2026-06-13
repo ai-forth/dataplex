@@ -58,4 +58,7 @@ such as:
 If you are adapting this repo for PCB design, start with
 [toolbox/enrichment/README.md](/home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/README.md:1).
 That package is the shortest path to exposing a local engineering corpus to an
-agent through MCP.
+agent through MCP and to running the local simulation loop from structured
+circuit proposal to `ngspice` output. The concrete PCB schema, simulation
+workflow, and TB001 starter mapping live in
+[toolbox/enrichment/examples/pcb/README.md](/home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/README.md:1).

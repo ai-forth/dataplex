@@ -4,11 +4,13 @@
   "description": "Local markdown fileset MCP tools for engineering evidence",
   "main": "dist/md-fileset",
   "bin": {
-    "md-fileset": "./dist/md-fileset"
+    "md-fileset": "./dist/md-fileset",
+    "pcb-sim": "./dist/pcb-sim"
   },
   "scripts": {
     "build:mdtool": "npx bun build --compile --outfile dist/md-fileset src/tools/md/main.ts",
-    "build": "npm run build:mdtool",
+    "build:simtool": "npx bun build --compile --outfile dist/pcb-sim src/tools/sim/main.ts",
+    "build": "npm run build:mdtool && npm run build:simtool",
     "run:mdtool": "npm run build:mdtool && npx @modelcontextprotocol/inspector dist/md-fileset --dir root-dir"
   },
   "keywords": [],

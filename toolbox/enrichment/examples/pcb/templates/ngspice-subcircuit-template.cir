@@ -1,0 +1,36 @@
+* Minimal ngspice template for a PCB evidence slice
+* Replace placeholder values with board-specific assumptions.
+
+.title startup-v1p8-boundary
+
+* Supplies
+VMAIN VIN 0 DC 5
+VCTRL EN 0 PULSE(0 3.3 0 1u 1u 5m 10m)
+
+* Example source impedance and bulk capacitance
+RSRC VIN VIN_FILT 0.15
+CBULK VIN_FILT 0 22u
+
+* Placeholder switching element
+MHSW VOUT EN VIN_FILT VIN_FILT PMOS_SW
+
+* Simplified load
+RLOAD VOUT 0 18
+CLOAD VOUT 0 10u
+
+* Simple clamp or pull network placeholder
+RPULL EN 0 100k
+
+* Placeholder MOS model.
+* Replace with vendor model or a justified approximation when available.
+.model PMOS_SW PMOS(VTO=-2.0 KP=1.2 RS=0.05 RD=0.05)
+
+.control
+set filetype=ascii
+tran 10u 20m
+print v(VIN) v(EN) v(VOUT)
+wrdata outputs/startup-v1p8-boundary.dat v(VIN) v(EN) v(VOUT)
+quit
+.endc
+
+.end

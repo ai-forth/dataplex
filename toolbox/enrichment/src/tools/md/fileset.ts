@@ -41,6 +41,9 @@ export class MarkdownFileset {
     for (const name of items) {
       const fullPath = path.join(targetDir, name);
       const stat = await fs.promises.stat(fullPath);
+      if (stat.isFile() && !name.endsWith('.md')) {
+        continue;
+      }
       const itemType = stat.isDirectory() ? 'directory' : 'file';
       const itemPath = path.relative(this.root, fullPath);
       lines.push(`${name} | ${itemPath} | ${itemType}`);
@@ -52,6 +55,9 @@ export class MarkdownFileset {
     const targetFile = this.safePath(relativePath);
     if (!fs.existsSync(targetFile) || !fs.statSync(targetFile).isFile()) {
       return `Path not found or is not a file: ${relativePath}`;
+    }
+    if (!targetFile.endsWith('.md')) {
+      return `Path is not a markdown file: ${relativePath}`;
     }
     return await fs.promises.readFile(targetFile, 'utf-8');
   }

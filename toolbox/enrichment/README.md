@@ -1,17 +1,23 @@
 # Engineering Evidence Tools
 
-This package is now a local-only MCP toolset for engineering evidence. It no
-longer depends on Google Cloud, Dataplex, `kcmd`, or the Google ADK.
+This package is now a local-first toolset for engineering evidence and
+simulation workflows. It no longer depends on Google Cloud, Dataplex, `kcmd`,
+or the Google ADK.
 
-The retained tool is `md-fileset`, a small MCP server that exposes a directory
-of markdown files so another agent can:
+The tools are:
+
+* `md-fileset`, a small MCP server that exposes a directory of markdown files
+* `pcb-sim`, a local CLI that scaffolds simulation cases, renders structured
+  circuit proposals, builds `ngspice` decks, and writes run reports
+
+`md-fileset` lets another agent:
 
 * browse the corpus
 * search within it
 * read individual files
 
-That makes it a good fit for PCB projects where the evidence lives in markdown
-exports of:
+That makes the package a good fit for PCB projects where the evidence lives in
+markdown exports of:
 
 * schematics and subsystem notes
 * BOM rationale
@@ -32,6 +38,7 @@ npm run build
 
 ```bash
 md-fileset --dir /absolute/path/to/evidence
+pcb-sim init --case-dir /absolute/path/to/case --title "power-boundary"
 ```
 
 Options:
@@ -54,8 +61,17 @@ export PCB_EVIDENCE_DIR=/absolute/path/to/your/evidence
 Then point your orchestrating agent or MCP client at
 [examples/pcb/mcp.json](/home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/mcp.json:1).
 
+The simulation workflow is documented in
+[examples/pcb/SIM_TOOLCHAIN.md](/home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/SIM_TOOLCHAIN.md:1).
+`pcb-sim` itself was smoke-tested here, but full simulation still requires
+`ngspice` to be installed on the host.
+
 ## Scope
 
-This package is intentionally narrow now. It provides evidence access only.
-Catalog mutation, cloud metadata sync, and agent orchestration were removed as
-part of the local-first PCB cleanup.
+This package is intentionally narrow. It provides:
+
+* evidence access
+* local structured simulation scaffolding
+
+Catalog mutation, cloud metadata sync, and remote agent orchestration were
+removed as part of the local-first PCB cleanup.

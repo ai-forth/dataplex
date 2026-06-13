@@ -2,3 +2,4 @@ build/
 dist/
 demo/
 node_modules/
+node_modules.broken-*/
