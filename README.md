@@ -62,3 +62,7 @@ agent through MCP and to running the local simulation loop from structured
 circuit proposal to `ngspice` output. The concrete PCB schema, simulation
 workflow, and TB001 starter mapping live in
 [toolbox/enrichment/examples/pcb/README.md](/home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/README.md:1).
+
+----
+
+The next best step is to add one more layer of behavior after reset release, probably as a coarse mode-dependent load profile, so SPI-enabled and No-Boot can start to diverge in a controlled, testable way without pretending we already have full GA144 execution modeled.
