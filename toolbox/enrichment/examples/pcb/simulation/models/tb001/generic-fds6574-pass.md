@@ -23,6 +23,11 @@ This is the current placeholder PMOS model used in the TB001 page-5 comparison
 cases when the unresolved `FDS6574` family is represented as a pass element or
 pass bank.
 
+Primary-source intake has now invalidated that polarity assumption for active
+modeling: the local onsemi datasheet identifies `FDS6574A` as an `N-channel`
+device. This artifact should therefore be kept only as a historical comparison
+record, not as a live manufacturer-grounded model.
+
 ## Model Kind
 
 * kind: simplified SPICE MOS model
@@ -56,9 +61,13 @@ This model is safe for:
 
 * relative comparison between candidate switching abstractions
 * coarse startup and branch-strength intuition
+* documenting a retired hypothesis that helped expose where the old topology
+  assumption was too loose
 
 This model is **not** safe for:
 
 * release decisions
 * device-stress conclusions
 * timing or dissipation claims tied to the real `FDS6574`
+* any new topology work that is meant to stay aligned with the local
+  manufacturer datasheet

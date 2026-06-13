@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="2920" viewBox="0 0 1120 2920">
+<rect x="0" y="0" width="1120" height="2920" fill="#f7f4ea"/>
+<text x="80" y="44" font-family="monospace" font-size="28" fill="#1f2933">tb001-ga144-test-bringup</text>
+<text x="80" y="68" font-family="monospace" font-size="14" fill="#52606d">TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA144 test-master side alive while page-4/page-5 control releases three switched UUT-facing 1.8 V domains for a socketed GA144 under test.</text>
+<circle cx="820" cy="80" r="6" fill="#b83280"/>
+<text x="834" y="85" font-family="monospace" font-size="14" fill="#102a43">VIN_SRC</text>
+<circle cx="820" cy="200" r="6" fill="#b83280"/>
+<text x="834" y="205" font-family="monospace" font-size="14" fill="#102a43">0</text>
+<circle cx="820" cy="320" r="6" fill="#b83280"/>
+<text x="834" y="325" font-family="monospace" font-size="14" fill="#102a43">VDRV</text>
+<circle cx="820" cy="440" r="6" fill="#b83280"/>
+<text x="834" y="445" font-family="monospace" font-size="14" fill="#102a43">DISABLE</text>
+<circle cx="820" cy="560" r="6" fill="#b83280"/>
+<text x="834" y="565" font-family="monospace" font-size="14" fill="#102a43">VIN_MAIN</text>
+<circle cx="820" cy="680" r="6" fill="#b83280"/>
+<text x="834" y="685" font-family="monospace" font-size="14" fill="#102a43">VMASTER</text>
+<circle cx="820" cy="800" r="6" fill="#b83280"/>
+<text x="834" y="805" font-family="monospace" font-size="14" fill="#102a43">GCORE</text>
+<circle cx="820" cy="920" r="6" fill="#b83280"/>
+<text x="834" y="925" font-family="monospace" font-size="14" fill="#102a43">VCORE</text>
+<circle cx="820" cy="1040" r="6" fill="#b83280"/>
+<text x="834" y="1045" font-family="monospace" font-size="14" fill="#102a43">GIO</text>
+<circle cx="820" cy="1160" r="6" fill="#b83280"/>
+<text x="834" y="1165" font-family="monospace" font-size="14" fill="#102a43">VIO</text>
+<circle cx="820" cy="1280" r="6" fill="#b83280"/>
+<text x="834" y="1285" font-family="monospace" font-size="14" fill="#102a43">GAN</text>
+<circle cx="820" cy="1400" r="6" fill="#b83280"/>
+<text x="834" y="1405" font-family="monospace" font-size="14" fill="#102a43">VAN</text>
+<rect x="260" y="51" width="250" height="58" rx="10" fill="#d9e2ec" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="75" font-family="monospace" font-size="14" fill="#102a43">MAIN1P8</text>
+<text x="272" y="95" font-family="monospace" font-size="12" fill="#486581">MAIN1P8 DC 1.8</text>
+<line x1="510" y1="51" x2="560" y2="51" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="51" x2="560" y2="80" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="80" x2="820" y2="80" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="51" r="4" fill="#243b53"/>
+<text x="248" y="55" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="109" x2="560" y2="109" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="109" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="109" r="4" fill="#243b53"/>
+<text x="248" y="113" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="171" width="250" height="58" rx="10" fill="#d9e2ec" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="195" font-family="monospace" font-size="14" fill="#102a43">GATEDRV</text>
+<text x="272" y="215" font-family="monospace" font-size="12" fill="#486581">GATEDRV DC 3.3</text>
+<line x1="510" y1="171" x2="560" y2="171" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="171" x2="560" y2="320" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="320" x2="820" y2="320" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="171" r="4" fill="#243b53"/>
+<text x="248" y="175" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="229" x2="560" y2="229" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="229" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="229" r="4" fill="#243b53"/>
+<text x="248" y="233" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="291" width="250" height="58" rx="10" fill="#d9e2ec" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="315" font-family="monospace" font-size="14" fill="#102a43">DIS</text>
+<text x="272" y="335" font-family="monospace" font-size="12" fill="#486581">DIS PULSE(3.3 0 1m 20u 20u 20m 40m)</text>
+<line x1="510" y1="291" x2="560" y2="291" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="291" x2="560" y2="440" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="440" x2="820" y2="440" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="291" r="4" fill="#243b53"/>
+<text x="248" y="295" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="349" x2="560" y2="349" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="349" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="349" r="4" fill="#243b53"/>
+<text x="248" y="353" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="411" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="435" font-family="monospace" font-size="14" fill="#102a43">SRC</text>
+<text x="272" y="455" font-family="monospace" font-size="12" fill="#486581">SRC 0.05</text>
+<line x1="510" y1="411" x2="560" y2="411" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="411" x2="560" y2="80" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="80" x2="820" y2="80" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="411" r="4" fill="#243b53"/>
+<text x="248" y="415" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="469" x2="560" y2="469" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="469" x2="560" y2="560" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="560" x2="820" y2="560" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="469" r="4" fill="#243b53"/>
+<text x="248" y="473" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="531" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="555" font-family="monospace" font-size="14" fill="#102a43">BULK</text>
+<text x="272" y="575" font-family="monospace" font-size="12" fill="#486581">BULK 22u</text>
+<line x1="510" y1="531" x2="560" y2="531" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="531" x2="560" y2="560" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="560" x2="820" y2="560" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="531" r="4" fill="#243b53"/>
+<text x="248" y="535" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="589" x2="560" y2="589" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="589" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="589" r="4" fill="#243b53"/>
+<text x="248" y="593" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="651" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="675" font-family="monospace" font-size="14" fill="#102a43">MASTERPATH</text>
+<text x="272" y="695" font-family="monospace" font-size="12" fill="#486581">MASTERPATH 0.04</text>
+<line x1="510" y1="651" x2="560" y2="651" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="651" x2="560" y2="560" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="560" x2="820" y2="560" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="651" r="4" fill="#243b53"/>
+<text x="248" y="655" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="709" x2="560" y2="709" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="709" x2="560" y2="680" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="680" x2="820" y2="680" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="709" r="4" fill="#243b53"/>
+<text x="248" y="713" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="771" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="795" font-family="monospace" font-size="14" fill="#102a43">MASTERC</text>
+<text x="272" y="815" font-family="monospace" font-size="12" fill="#486581">MASTERC 10u</text>
+<line x1="510" y1="771" x2="560" y2="771" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="771" x2="560" y2="680" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="680" x2="820" y2="680" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="771" r="4" fill="#243b53"/>
+<text x="248" y="775" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="829" x2="560" y2="829" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="829" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="829" r="4" fill="#243b53"/>
+<text x="248" y="833" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="891" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="915" font-family="monospace" font-size="14" fill="#102a43">MASTERLOAD</text>
+<text x="272" y="935" font-family="monospace" font-size="12" fill="#486581">MASTERLOAD 60</text>
+<line x1="510" y1="891" x2="560" y2="891" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="891" x2="560" y2="680" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="680" x2="820" y2="680" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="891" r="4" fill="#243b53"/>
+<text x="248" y="895" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="949" x2="560" y2="949" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="949" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="949" r="4" fill="#243b53"/>
+<text x="248" y="953" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="1011" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1035" font-family="monospace" font-size="14" fill="#102a43">GPULLCORE</text>
+<text x="272" y="1055" font-family="monospace" font-size="12" fill="#486581">GPULLCORE 47k</text>
+<line x1="510" y1="1011" x2="560" y2="1011" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1011" x2="560" y2="320" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="320" x2="820" y2="320" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1011" r="4" fill="#243b53"/>
+<text x="248" y="1015" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1069" x2="560" y2="1069" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1069" x2="560" y2="800" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="800" x2="820" y2="800" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1069" r="4" fill="#243b53"/>
+<text x="248" y="1073" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="1131" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1155" font-family="monospace" font-size="14" fill="#102a43">GCLAMPCORE</text>
+<text x="272" y="1175" font-family="monospace" font-size="12" fill="#486581">GCLAMPCORE DMN5L06DMK_CLAMP</text>
+<line x1="510" y1="1131" x2="560" y2="1131" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1131" x2="560" y2="800" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="800" x2="820" y2="800" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1131" r="4" fill="#243b53"/>
+<text x="248" y="1135" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1150.3333333333333" x2="560" y2="1150.3333333333333" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1150.3333333333333" x2="560" y2="440" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="440" x2="820" y2="440" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1150.3333333333333" r="4" fill="#243b53"/>
+<text x="248" y="1154.3333333333333" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<line x1="510" y1="1169.6666666666667" x2="560" y2="1169.6666666666667" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1169.6666666666667" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1169.6666666666667" r="4" fill="#243b53"/>
+<text x="248" y="1173.6666666666667" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin3</text>
+<line x1="510" y1="1189" x2="560" y2="1189" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1189" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1189" r="4" fill="#243b53"/>
+<text x="248" y="1193" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin4</text>
+<rect x="260" y="1251" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1275" font-family="monospace" font-size="14" fill="#102a43">PASSCORE</text>
+<text x="272" y="1295" font-family="monospace" font-size="12" fill="#486581">PASSCORE FDS6574A_SW</text>
+<line x1="510" y1="1251" x2="560" y2="1251" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1251" x2="560" y2="560" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="560" x2="820" y2="560" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1251" r="4" fill="#243b53"/>
+<text x="248" y="1255" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1270.3333333333333" x2="560" y2="1270.3333333333333" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1270.3333333333333" x2="560" y2="800" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="800" x2="820" y2="800" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1270.3333333333333" r="4" fill="#243b53"/>
+<text x="248" y="1274.3333333333333" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<line x1="510" y1="1289.6666666666667" x2="560" y2="1289.6666666666667" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1289.6666666666667" x2="560" y2="920" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="920" x2="820" y2="920" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1289.6666666666667" r="4" fill="#243b53"/>
+<text x="248" y="1293.6666666666667" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin3</text>
+<line x1="510" y1="1309" x2="560" y2="1309" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1309" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1309" r="4" fill="#243b53"/>
+<text x="248" y="1313" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin4</text>
+<rect x="260" y="1371" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1395" font-family="monospace" font-size="14" fill="#102a43">COREC</text>
+<text x="272" y="1415" font-family="monospace" font-size="12" fill="#486581">COREC 22u</text>
+<line x1="510" y1="1371" x2="560" y2="1371" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1371" x2="560" y2="920" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="920" x2="820" y2="920" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1371" r="4" fill="#243b53"/>
+<text x="248" y="1375" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1429" x2="560" y2="1429" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1429" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1429" r="4" fill="#243b53"/>
+<text x="248" y="1433" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="1491" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1515" font-family="monospace" font-size="14" fill="#102a43">CORELOAD</text>
+<text x="272" y="1535" font-family="monospace" font-size="12" fill="#486581">CORELOAD 36</text>
+<line x1="510" y1="1491" x2="560" y2="1491" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1491" x2="560" y2="920" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="920" x2="820" y2="920" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1491" r="4" fill="#243b53"/>
+<text x="248" y="1495" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1549" x2="560" y2="1549" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1549" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1549" r="4" fill="#243b53"/>
+<text x="248" y="1553" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="1611" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1635" font-family="monospace" font-size="14" fill="#102a43">GPULLIO</text>
+<text x="272" y="1655" font-family="monospace" font-size="12" fill="#486581">GPULLIO 47k</text>
+<line x1="510" y1="1611" x2="560" y2="1611" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1611" x2="560" y2="320" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="320" x2="820" y2="320" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1611" r="4" fill="#243b53"/>
+<text x="248" y="1615" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1669" x2="560" y2="1669" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1669" x2="560" y2="1040" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1040" x2="820" y2="1040" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1669" r="4" fill="#243b53"/>
+<text x="248" y="1673" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="1731" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1755" font-family="monospace" font-size="14" fill="#102a43">GCLAMPIO</text>
+<text x="272" y="1775" font-family="monospace" font-size="12" fill="#486581">GCLAMPIO DMN5L06DMK_CLAMP</text>
+<line x1="510" y1="1731" x2="560" y2="1731" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1731" x2="560" y2="1040" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1040" x2="820" y2="1040" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1731" r="4" fill="#243b53"/>
+<text x="248" y="1735" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1750.3333333333333" x2="560" y2="1750.3333333333333" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1750.3333333333333" x2="560" y2="440" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="440" x2="820" y2="440" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1750.3333333333333" r="4" fill="#243b53"/>
+<text x="248" y="1754.3333333333333" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<line x1="510" y1="1769.6666666666667" x2="560" y2="1769.6666666666667" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1769.6666666666667" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1769.6666666666667" r="4" fill="#243b53"/>
+<text x="248" y="1773.6666666666667" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin3</text>
+<line x1="510" y1="1789" x2="560" y2="1789" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1789" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1789" r="4" fill="#243b53"/>
+<text x="248" y="1793" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin4</text>
+<rect x="260" y="1851" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1875" font-family="monospace" font-size="14" fill="#102a43">PASSIO</text>
+<text x="272" y="1895" font-family="monospace" font-size="12" fill="#486581">PASSIO FDS6574A_SW</text>
+<line x1="510" y1="1851" x2="560" y2="1851" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1851" x2="560" y2="560" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="560" x2="820" y2="560" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1851" r="4" fill="#243b53"/>
+<text x="248" y="1855" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="1870.3333333333333" x2="560" y2="1870.3333333333333" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1870.3333333333333" x2="560" y2="1040" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1040" x2="820" y2="1040" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1870.3333333333333" r="4" fill="#243b53"/>
+<text x="248" y="1874.3333333333333" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<line x1="510" y1="1889.6666666666667" x2="560" y2="1889.6666666666667" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1889.6666666666667" x2="560" y2="1160" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1160" x2="820" y2="1160" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1889.6666666666667" r="4" fill="#243b53"/>
+<text x="248" y="1893.6666666666667" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin3</text>
+<line x1="510" y1="1909" x2="560" y2="1909" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1909" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1909" r="4" fill="#243b53"/>
+<text x="248" y="1913" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin4</text>
+<rect x="260" y="1971" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="1995" font-family="monospace" font-size="14" fill="#102a43">IOC</text>
+<text x="272" y="2015" font-family="monospace" font-size="12" fill="#486581">IOC 12u</text>
+<line x1="510" y1="1971" x2="560" y2="1971" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="1971" x2="560" y2="1160" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1160" x2="820" y2="1160" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="1971" r="4" fill="#243b53"/>
+<text x="248" y="1975" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="2029" x2="560" y2="2029" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2029" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2029" r="4" fill="#243b53"/>
+<text x="248" y="2033" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="2091" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="2115" font-family="monospace" font-size="14" fill="#102a43">IOLOAD</text>
+<text x="272" y="2135" font-family="monospace" font-size="12" fill="#486581">IOLOAD 90</text>
+<line x1="510" y1="2091" x2="560" y2="2091" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2091" x2="560" y2="1160" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1160" x2="820" y2="1160" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2091" r="4" fill="#243b53"/>
+<text x="248" y="2095" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="2149" x2="560" y2="2149" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2149" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2149" r="4" fill="#243b53"/>
+<text x="248" y="2153" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="2211" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="2235" font-family="monospace" font-size="14" fill="#102a43">GPULLAN</text>
+<text x="272" y="2255" font-family="monospace" font-size="12" fill="#486581">GPULLAN 47k</text>
+<line x1="510" y1="2211" x2="560" y2="2211" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2211" x2="560" y2="320" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="320" x2="820" y2="320" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2211" r="4" fill="#243b53"/>
+<text x="248" y="2215" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="2269" x2="560" y2="2269" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2269" x2="560" y2="1280" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1280" x2="820" y2="1280" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2269" r="4" fill="#243b53"/>
+<text x="248" y="2273" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="2331" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="2355" font-family="monospace" font-size="14" fill="#102a43">GCLAMPAN</text>
+<text x="272" y="2375" font-family="monospace" font-size="12" fill="#486581">GCLAMPAN DMN5L06DMK_CLAMP</text>
+<line x1="510" y1="2331" x2="560" y2="2331" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2331" x2="560" y2="1280" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1280" x2="820" y2="1280" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2331" r="4" fill="#243b53"/>
+<text x="248" y="2335" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="2350.3333333333335" x2="560" y2="2350.3333333333335" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2350.3333333333335" x2="560" y2="440" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="440" x2="820" y2="440" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2350.3333333333335" r="4" fill="#243b53"/>
+<text x="248" y="2354.3333333333335" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<line x1="510" y1="2369.6666666666665" x2="560" y2="2369.6666666666665" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2369.6666666666665" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2369.6666666666665" r="4" fill="#243b53"/>
+<text x="248" y="2373.6666666666665" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin3</text>
+<line x1="510" y1="2389" x2="560" y2="2389" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2389" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2389" r="4" fill="#243b53"/>
+<text x="248" y="2393" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin4</text>
+<rect x="260" y="2451" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="2475" font-family="monospace" font-size="14" fill="#102a43">PASSAN</text>
+<text x="272" y="2495" font-family="monospace" font-size="12" fill="#486581">PASSAN FDS6574A_SW</text>
+<line x1="510" y1="2451" x2="560" y2="2451" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2451" x2="560" y2="560" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="560" x2="820" y2="560" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2451" r="4" fill="#243b53"/>
+<text x="248" y="2455" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="2470.3333333333335" x2="560" y2="2470.3333333333335" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2470.3333333333335" x2="560" y2="1280" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1280" x2="820" y2="1280" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2470.3333333333335" r="4" fill="#243b53"/>
+<text x="248" y="2474.3333333333335" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<line x1="510" y1="2489.6666666666665" x2="560" y2="2489.6666666666665" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2489.6666666666665" x2="560" y2="1400" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1400" x2="820" y2="1400" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2489.6666666666665" r="4" fill="#243b53"/>
+<text x="248" y="2493.6666666666665" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin3</text>
+<line x1="510" y1="2509" x2="560" y2="2509" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2509" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2509" r="4" fill="#243b53"/>
+<text x="248" y="2513" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin4</text>
+<rect x="260" y="2571" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="2595" font-family="monospace" font-size="14" fill="#102a43">ANC</text>
+<text x="272" y="2615" font-family="monospace" font-size="12" fill="#486581">ANC 15u</text>
+<line x1="510" y1="2571" x2="560" y2="2571" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2571" x2="560" y2="1400" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1400" x2="820" y2="1400" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2571" r="4" fill="#243b53"/>
+<text x="248" y="2575" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="2629" x2="560" y2="2629" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2629" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2629" r="4" fill="#243b53"/>
+<text x="248" y="2633" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+<rect x="260" y="2691" width="250" height="58" rx="10" fill="#fff7d6" stroke="#243b53" stroke-width="2"/>
+<text x="272" y="2715" font-family="monospace" font-size="14" fill="#102a43">ANLOAD</text>
+<text x="272" y="2735" font-family="monospace" font-size="12" fill="#486581">ANLOAD 120</text>
+<line x1="510" y1="2691" x2="560" y2="2691" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2691" x2="560" y2="1400" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="1400" x2="820" y2="1400" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2691" r="4" fill="#243b53"/>
+<text x="248" y="2695" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin1</text>
+<line x1="510" y1="2749" x2="560" y2="2749" stroke="#243b53" stroke-width="2"/>
+<line x1="560" y1="2749" x2="560" y2="200" stroke="#829ab1" stroke-width="2"/>
+<line x1="560" y1="200" x2="820" y2="200" stroke="#829ab1" stroke-width="2"/>
+<circle cx="510" cy="2749" r="4" fill="#243b53"/>
+<text x="248" y="2753" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
+</svg>

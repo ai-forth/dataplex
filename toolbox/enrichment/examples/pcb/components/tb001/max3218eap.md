@@ -36,14 +36,16 @@ Known:
 
 * MPN string: `MAX3218EAP`
 * package evidence in the current TB001 corpus: `SSOP_20`
+* manufacturer product-page function: RS-232 transceiver
+* manufacturer product-page operating supply range: `1.8 V to 4.25 V`
+* manufacturer product-page guaranteed data rate: `120 kbps`
+* manufacturer product-page package family: `20-pin SSOP` and `DIP`
 
 Still required from manufacturer sources:
 
-* exact serial-interface function
 * pinout and supply requirements
-* signal-level translation behavior
-* protection or line-driver characteristics
-* vendor support assets or reference circuits
+* fuller electrical limits from the datasheet
+* any directly useful local reference-circuit or model assets
 
 ## Manufacturer Source Intake
 
@@ -57,6 +59,11 @@ Grounded today:
 * the family is described as a `1.8V to 4.25V` powered RS-232 transceiver with
   AutoShutdown
 * the package family includes `20-pin SSOP`
+* the same product page states:
+  * `1 µA` supply current using AutoShutdown
+  * `120 kbps` guaranteed data rate
+  * flow-through pinout
+  * on-board DC-DC converters
 
 Manufacturer source:
 
@@ -64,6 +71,21 @@ Manufacturer source:
 
 These facts support the current page-4 interpretation that `U6` is a serial or
 line-interface IC rather than a generic logic placeholder.
+
+## First-Pass Electrical Characteristics
+
+From the current Analog Devices product page:
+
+* function: low-voltage RS-232 transceiver
+* operating supply range: `+1.8 V to +4.25 V`
+* power-saving feature: AutoShutdown with `1 µA` supply current
+* guaranteed data rate: `120 kbps`
+* interface behavior: intended to maintain true RS-232 / EIA/TIA-562 voltage
+  levels from a low-voltage supply
+* package family: `20-pin SSOP` and `DIP`
+
+These characteristics materially strengthen the page-4 control-boundary
+interpretation because they align with an off-board serial-interface role.
 
 ## Simulation Relevance
 

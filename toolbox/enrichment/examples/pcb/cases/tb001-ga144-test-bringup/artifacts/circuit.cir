@@ -1,0 +1,47 @@
+.title tb001-ga144-test-bringup
+
+* TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA144 test-master side alive while page-4/page-5 control releases three switched UUT-facing 1.8 V domains for a socketed GA144 under test.
+* assumption: The page-1 master side is represented as an always-on 1.8 V branch feeding the GA144 test master, SRAM, and SPI flash as a lumped load.
+* assumption: The page-2 UUT side is represented as three switched branches: V1P8-Core/UUT, V1P8-IO/UUT, and V1P8-Analog/UUT.
+* assumption: FDS6574A is treated as the stronger N-channel pass family that feeds the UUT branches from the common 1.8 V distribution.
+* assumption: DMN5L06DMK-AB is treated as the smaller N-channel clamp family that holds branch gates low until control release.
+* assumption: A 3.3 V control domain is available to pull the branch gates high enough to pass a 1.8 V rail through an N-channel device abstraction.
+* assumption: The test-master side should remain substantially stable while the UUT branches are enabled.
+* assumption: This case is for power-up fitness and intended test usage only; it does not simulate full GA144 logic or protocol behavior.
+
+VMAIN1P8 VIN_SRC 0 DC 1.8
+VGATEDRV VDRV 0 DC 3.3
+VDIS DISABLE 0 PULSE(3.3 0 1m 20u 20u 20m 40m)
+RSRC VIN_SRC VIN_MAIN 0.05
+CBULK VIN_MAIN 0 22u
+RMASTERPATH VIN_MAIN VMASTER 0.04
+CMASTERC VMASTER 0 10u
+RMASTERLOAD VMASTER 0 60
+RGPULLCORE VDRV GCORE 47k
+MGCLAMPCORE GCORE DISABLE 0 0 DMN5L06DMK_CLAMP
+MPASSCORE VIN_MAIN GCORE VCORE 0 FDS6574A_SW
+CCOREC VCORE 0 22u
+RCORELOAD VCORE 0 36
+RGPULLIO VDRV GIO 47k
+MGCLAMPIO GIO DISABLE 0 0 DMN5L06DMK_CLAMP
+MPASSIO VIN_MAIN GIO VIO 0 FDS6574A_SW
+CIOC VIO 0 12u
+RIOLOAD VIO 0 90
+RGPULLAN VDRV GAN 47k
+MGCLAMPAN GAN DISABLE 0 0 DMN5L06DMK_CLAMP
+MPASSAN VIN_MAIN GAN VAN 0 FDS6574A_SW
+CANC VAN 0 15u
+RANLOAD VAN 0 120
+
+.model FDS6574A_SW NMOS(VTO=1.0 KP=4 RS=0.003 RD=0.003)
+.model DMN5L06DMK_CLAMP NMOS(VTO=0.75 KP=0.05 RS=0.2 RD=0.2)
+
+.control
+set filetype=ascii
+tran 20u 12m
+print v(VIN_MAIN) v(VMASTER) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
+wrdata /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/outputs/sim.dat v(VIN_MAIN) v(VMASTER) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
+quit
+.endc
+
+.end

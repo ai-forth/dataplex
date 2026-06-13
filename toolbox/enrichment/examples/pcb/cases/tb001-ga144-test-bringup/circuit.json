@@ -1,0 +1,255 @@
+{
+  "title": "tb001-ga144-test-bringup",
+  "description": "TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA144 test-master side alive while page-4/page-5 control releases three switched UUT-facing 1.8 V domains for a socketed GA144 under test.",
+  "assumptions": [
+    "The page-1 master side is represented as an always-on 1.8 V branch feeding the GA144 test master, SRAM, and SPI flash as a lumped load.",
+    "The page-2 UUT side is represented as three switched branches: V1P8-Core/UUT, V1P8-IO/UUT, and V1P8-Analog/UUT.",
+    "FDS6574A is treated as the stronger N-channel pass family that feeds the UUT branches from the common 1.8 V distribution.",
+    "DMN5L06DMK-AB is treated as the smaller N-channel clamp family that holds branch gates low until control release.",
+    "A 3.3 V control domain is available to pull the branch gates high enough to pass a 1.8 V rail through an N-channel device abstraction.",
+    "The test-master side should remain substantially stable while the UUT branches are enabled.",
+    "This case is for power-up fitness and intended test usage only; it does not simulate full GA144 logic or protocol behavior."
+  ],
+  "modelCards": [
+    ".model FDS6574A_SW NMOS(VTO=1.0 KP=4 RS=0.003 RD=0.003)",
+    ".model DMN5L06DMK_CLAMP NMOS(VTO=0.75 KP=0.05 RS=0.2 RD=0.2)"
+  ],
+  "analyses": [
+    {
+      "kind": "tran",
+      "command": "tran 20u 12m"
+    }
+  ],
+  "outputs": [
+    "v(VIN_MAIN)",
+    "v(VMASTER)",
+    "v(GCORE)",
+    "v(GIO)",
+    "v(GAN)",
+    "v(VCORE)",
+    "v(VIO)",
+    "v(VAN)",
+    "v(DISABLE)"
+  ],
+  "components": [
+    {
+      "id": "MAIN1P8",
+      "type": "vsource",
+      "nodes": [
+        "VIN_SRC",
+        "0"
+      ],
+      "value": "DC 1.8"
+    },
+    {
+      "id": "GATEDRV",
+      "type": "vsource",
+      "nodes": [
+        "VDRV",
+        "0"
+      ],
+      "value": "DC 3.3"
+    },
+    {
+      "id": "DIS",
+      "type": "vsource",
+      "nodes": [
+        "DISABLE",
+        "0"
+      ],
+      "value": "PULSE(3.3 0 1m 20u 20u 20m 40m)"
+    },
+    {
+      "id": "SRC",
+      "type": "resistor",
+      "nodes": [
+        "VIN_SRC",
+        "VIN_MAIN"
+      ],
+      "value": "0.05"
+    },
+    {
+      "id": "BULK",
+      "type": "capacitor",
+      "nodes": [
+        "VIN_MAIN",
+        "0"
+      ],
+      "value": "22u"
+    },
+    {
+      "id": "MASTERPATH",
+      "type": "resistor",
+      "nodes": [
+        "VIN_MAIN",
+        "VMASTER"
+      ],
+      "value": "0.04"
+    },
+    {
+      "id": "MASTERC",
+      "type": "capacitor",
+      "nodes": [
+        "VMASTER",
+        "0"
+      ],
+      "value": "10u"
+    },
+    {
+      "id": "MASTERLOAD",
+      "type": "resistor",
+      "nodes": [
+        "VMASTER",
+        "0"
+      ],
+      "value": "60"
+    },
+    {
+      "id": "GPULLCORE",
+      "type": "resistor",
+      "nodes": [
+        "VDRV",
+        "GCORE"
+      ],
+      "value": "47k"
+    },
+    {
+      "id": "GCLAMPCORE",
+      "type": "nmos",
+      "nodes": [
+        "GCORE",
+        "DISABLE",
+        "0",
+        "0"
+      ],
+      "model": "DMN5L06DMK_CLAMP"
+    },
+    {
+      "id": "PASSCORE",
+      "type": "nmos",
+      "nodes": [
+        "VIN_MAIN",
+        "GCORE",
+        "VCORE",
+        "0"
+      ],
+      "model": "FDS6574A_SW"
+    },
+    {
+      "id": "COREC",
+      "type": "capacitor",
+      "nodes": [
+        "VCORE",
+        "0"
+      ],
+      "value": "22u"
+    },
+    {
+      "id": "CORELOAD",
+      "type": "resistor",
+      "nodes": [
+        "VCORE",
+        "0"
+      ],
+      "value": "36"
+    },
+    {
+      "id": "GPULLIO",
+      "type": "resistor",
+      "nodes": [
+        "VDRV",
+        "GIO"
+      ],
+      "value": "47k"
+    },
+    {
+      "id": "GCLAMPIO",
+      "type": "nmos",
+      "nodes": [
+        "GIO",
+        "DISABLE",
+        "0",
+        "0"
+      ],
+      "model": "DMN5L06DMK_CLAMP"
+    },
+    {
+      "id": "PASSIO",
+      "type": "nmos",
+      "nodes": [
+        "VIN_MAIN",
+        "GIO",
+        "VIO",
+        "0"
+      ],
+      "model": "FDS6574A_SW"
+    },
+    {
+      "id": "IOC",
+      "type": "capacitor",
+      "nodes": [
+        "VIO",
+        "0"
+      ],
+      "value": "12u"
+    },
+    {
+      "id": "IOLOAD",
+      "type": "resistor",
+      "nodes": [
+        "VIO",
+        "0"
+      ],
+      "value": "90"
+    },
+    {
+      "id": "GPULLAN",
+      "type": "resistor",
+      "nodes": [
+        "VDRV",
+        "GAN"
+      ],
+      "value": "47k"
+    },
+    {
+      "id": "GCLAMPAN",
+      "type": "nmos",
+      "nodes": [
+        "GAN",
+        "DISABLE",
+        "0",
+        "0"
+      ],
+      "model": "DMN5L06DMK_CLAMP"
+    },
+    {
+      "id": "PASSAN",
+      "type": "nmos",
+      "nodes": [
+        "VIN_MAIN",
+        "GAN",
+        "VAN",
+        "0"
+      ],
+      "model": "FDS6574A_SW"
+    },
+    {
+      "id": "ANC",
+      "type": "capacitor",
+      "nodes": [
+        "VAN",
+        "0"
+      ],
+      "value": "15u"
+    },
+    {
+      "id": "ANLOAD",
+      "type": "resistor",
+      "nodes": [
+        "VAN",
+        "0"
+      ],
+      "value": "120"
+    }
+  ]
+}
