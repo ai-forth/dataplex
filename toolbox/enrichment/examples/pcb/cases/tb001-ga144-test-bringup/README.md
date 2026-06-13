@@ -39,6 +39,9 @@ These sources support the following working picture:
 * page 5 appears to switch or distribute the UUT-specific `V1P8-Core/UUT`,
   `V1P8-IO/UUT`, and `V1P8-Analog/UUT` branches
 
+This case is now aligned to the explicit candidate operating sequence recorded
+in `test/tb001/ga144-test-sequence.md`.
+
 ## Accuracy Window
 
 For this pass, the model does not need exact production-grade fidelity.
@@ -106,6 +109,23 @@ This case intentionally abstracts the board into four electrical load groups:
 * one switched `V1P8-Analog/UUT` branch
 * one master-side RC `RESET_HOLD` proxy derived from the always-on branch
 
+## Candidate Sequence Mapping
+
+The current case should be read as a timing-window version of the candidate
+TB001 test flow:
+
+1. the common `V1P8` source begins rising at transient start
+2. the page-1 side reaches validity first through `VMASTER`, `VU2`, `VU1`, and
+   `VU3`
+3. the UUT is treated as held or effectively non-running during early startup
+4. boot-mode choice is abstracted rather than digitally modeled
+5. the delayed `DISABLE` pulse releases the page-5-style switching path so the
+   UUT domains rise
+6. `RESET_HOLD` rises afterward as a proxy for deferred test activity
+
+For this specific pass, the abstraction is closest to a `No-Boot` or
+still-held-in-reset interpretation, not a proven SPI-boot execution path.
+
 Control assumptions:
 
 * the page-4/page-5 transistor cluster is abstracted as a control release
@@ -113,9 +133,13 @@ Control assumptions:
 * `DMN5L06DMK-AB` behavior is represented as the small clamp device that holds
   branch gates low before enable release
 * `FDS6574A` behavior is represented as the stronger branch-pass element
-* branch gates are released after startup so the UUT domains can rise
-* a simple RC node `RESET_HOLD` stands in for the idea that test traffic should
-  only begin after the master side has had time to settle
+* branch gates are released after startup so the UUT domains can rise only
+  after the master side is already valid
+* a simple RC node `RESET_HOLD` stands in for the idea that reset release or
+  first meaningful test activity should lag rail settlement
+* the delayed release event is intentionally a merged timing surrogate for
+  reset assertion, boot-mode choice, and later UUT-domain enable rather than an
+  exact recovered control net
 
 ## Expected Good Behavior
 
@@ -132,6 +156,8 @@ true in this abstraction:
   that the page-1 controller, SRAM, or flash would obviously brown out
 * the reset-hold proxy should rise after the master branch is healthy rather
   than racing ahead of the supply
+* the reset-hold proxy should also lag the main UUT-domain rise enough that the
+  UUT is not being asked to operate in the middle of obvious startup motion
 * all active rails that matter for GA144 test use remain inside a realistic
   operating window centered on `1.8 V` and bounded by the datasheet
 
@@ -164,6 +190,8 @@ Current interpretation:
 * the reset proxy rises after the master branch is established, which is
   directionally consistent with a board that should defer test traffic until
   bring-up settles
+* the current interpretation is closer to a controlled hold-and-release startup
+  than to an already-proven SPI-boot execution story
 * the heaviest UUT branch in this abstraction is the core rail, and it is the
   first place where marginal headroom shows up
 * nothing in this run suggests an obvious catastrophic brownout of the
@@ -178,6 +206,8 @@ power a UUT GA144 in a controlled way for test.
 ## Known Limitations
 
 * This case does not model actual GA144 logic execution.
+* It does not yet distinguish `SPI-enabled` startup from `No-Boot` startup in a
+  digitally meaningful way.
 * It does not yet prove the exact `FDS6574A` page-5 wiring.
 * It does not include connector or cable effects.
 * It uses datasheet-informed MOS abstractions, not vendor transistor models.
@@ -194,6 +224,8 @@ cd toolbox/enrichment
 
 * tighten `FDS6574A` and `DMN5L06DMK-AB` model parameters from the local
   datasheets
+* split the current merged timing surrogate into separate boot-mode and
+  reset-release proxies
 * tune the reset-hold abstraction so domain settle time can be compared against
   a more realistic test-start threshold
 * tighten the relative branch loads once better evidence exists for page-1

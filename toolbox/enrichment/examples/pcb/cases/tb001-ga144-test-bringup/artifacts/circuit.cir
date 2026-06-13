@@ -6,6 +6,10 @@
 * assumption: FDS6574A is treated as the stronger N-channel pass family that feeds the UUT branches from the common 1.8 V distribution.
 * assumption: DMN5L06DMK-AB is treated as the smaller N-channel clamp family that holds branch gates low until control release.
 * assumption: A 3.3 V control domain is available to pull the branch gates high enough to pass a 1.8 V rail through an N-channel device abstraction.
+* assumption: This case follows the candidate TB001 operating sequence: master-side rail first, UUT held while control settles, UUT rails enabled, then reset effectively released after settlement.
+* assumption: The delayed DISABLE pulse stands in for the combined effect of reset assertion, boot-mode selection, and later UUT branch enable rather than one exact named schematic net.
+* assumption: The current run should be read as a No-Boot-or-held-in-reset style startup path; SPI-enabled behavior remains a later comparison mode rather than something digitally simulated here.
+* assumption: RESET_HOLD is only a timing proxy for deferred UUT activity and not a proven reconstruction of the exact GA144 RESET- wiring.
 * assumption: For this pass, about 10% modeling accuracy is acceptable if the result preserves the real operating window that matters for GA144 test use.
 * assumption: GA144 operating fitness is judged primarily against its recommended VDD window of 1.62 V to 2.0 V rather than against an exact 1.800 V target.
 * assumption: The test-master side should remain substantially stable while the UUT branches are enabled.
