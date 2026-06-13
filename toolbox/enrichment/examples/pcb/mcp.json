@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "md-fileset": {
+      "command": "${KC_MD_FILESET_BIN}",
+      "args": ["--dir", "${PCB_EVIDENCE_DIR}"]
+    }
+  }
+}
