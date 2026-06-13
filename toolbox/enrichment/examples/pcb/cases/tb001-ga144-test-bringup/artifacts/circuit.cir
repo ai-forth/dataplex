@@ -1,11 +1,13 @@
 .title tb001-ga144-test-bringup
 
 * TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA144 test-master side alive while page-4/page-5 control releases three switched UUT-facing 1.8 V domains for a socketed GA144 under test.
-* assumption: The page-1 master side is represented as an always-on 1.8 V branch feeding the GA144 test master, SRAM, and SPI flash as a lumped load.
+* assumption: The page-1 master side is represented as an always-on 1.8 V branch split into GA144 test-master, SRAM, and SPI flash sub-loads.
 * assumption: The page-2 UUT side is represented as three switched branches: V1P8-Core/UUT, V1P8-IO/UUT, and V1P8-Analog/UUT.
 * assumption: FDS6574A is treated as the stronger N-channel pass family that feeds the UUT branches from the common 1.8 V distribution.
 * assumption: DMN5L06DMK-AB is treated as the smaller N-channel clamp family that holds branch gates low until control release.
 * assumption: A 3.3 V control domain is available to pull the branch gates high enough to pass a 1.8 V rail through an N-channel device abstraction.
+* assumption: For this pass, about 10% modeling accuracy is acceptable if the result preserves the real operating window that matters for GA144 test use.
+* assumption: GA144 operating fitness is judged primarily against its recommended VDD window of 1.62 V to 2.0 V rather than against an exact 1.800 V target.
 * assumption: The test-master side should remain substantially stable while the UUT branches are enabled.
 * assumption: This case is for power-up fitness and intended test usage only; it does not simulate full GA144 logic or protocol behavior.
 
@@ -15,8 +17,17 @@ VDIS DISABLE 0 PULSE(3.3 0 1m 20u 20u 20m 40m)
 RSRC VIN_SRC VIN_MAIN 0.05
 CBULK VIN_MAIN 0 22u
 RMASTERPATH VIN_MAIN VMASTER 0.04
-CMASTERC VMASTER 0 10u
-RMASTERLOAD VMASTER 0 60
+CMASTERC VMASTER 0 4.7u
+RMASTERBLEED VMASTER 0 800
+RU2PATH VMASTER VU2 0.03
+CU2C VU2 0 3u
+RU2LOAD VU2 0 120
+RU1PATH VMASTER VU1 0.04
+CU1C VU1 0 1u
+RU1LOAD VU1 0 500
+RU3PATH VMASTER VU3 0.05
+CU3C VU3 0 0.47u
+RU3LOAD VU3 0 1200
 RRSTCHG VMASTER RESET_HOLD 180k
 CRSTC RESET_HOLD 0 0.1u
 RRSTBLEED RESET_HOLD 0 1Meg
@@ -42,8 +53,8 @@ RANLOAD VAN 0 120
 .control
 set filetype=ascii
 tran 20u 12m
-print v(VIN_MAIN) v(VMASTER) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
-wrdata /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/outputs/sim.dat v(VIN_MAIN) v(VMASTER) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
+print v(VIN_MAIN) v(VMASTER) v(VU2) v(VU1) v(VU3) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
+wrdata /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/outputs/sim.dat v(VIN_MAIN) v(VMASTER) v(VU2) v(VU1) v(VU3) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN) v(DISABLE)
 quit
 .endc
 
