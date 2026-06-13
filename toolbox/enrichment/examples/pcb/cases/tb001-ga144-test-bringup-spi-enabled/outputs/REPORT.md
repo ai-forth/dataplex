@@ -1,10 +1,10 @@
-# Simulation Report: tb001-ga144-test-bringup
+# Simulation Report: tb001-ga144-test-bringup-spi-enabled
 
 ## Purpose
-TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA144 test-master side alive while page-4/page-5 control releases three switched UUT-facing 1.8 V domains for a socketed GA144 under test.
+TB001 SPI-enabled bring-up comparison: the same 1.8 V master/UUT rail timing is preserved while the GA144 boot-choice proxy is driven low so reset would see a SPI-boot-allowed startup assumption.
 
 ## Circuit Summary
-* Title: tb001-ga144-test-bringup
+* Title: tb001-ga144-test-bringup-spi-enabled
 * Components: 38
 * Analyses: tran
 * Outputs: v(VIN_MAIN), v(VMASTER), v(VU2), v(VU1), v(VU3), v(BOOTMODE), v(ENABLE_HOLD), v(RESET_ASSERT), v(RESET_HOLD), v(GCORE), v(GIO), v(GAN), v(VCORE), v(VIO), v(VAN)
@@ -16,7 +16,7 @@ TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA1
 * DMN5L06DMK-AB is treated as the smaller N-channel clamp family that holds branch gates low until control release.
 * A 3.3 V control domain is available to pull the branch gates high enough to pass a 1.8 V rail through an N-channel device abstraction.
 * This case follows the candidate TB001 operating sequence: master-side rail first, UUT held while control settles, UUT rails enabled, then reset released after settlement.
-* BOOTMODE is an explicit proxy for the GA144 705.17 boot-choice state at reset; in this current case it is held high to represent a No-Boot-style startup assumption.
+* BOOTMODE is an explicit proxy for the GA144 705.17 boot-choice state at reset; in this comparison case it is held low to represent a SPI-enabled startup assumption.
 * ENABLE_HOLD is an explicit proxy for the page-4/page-5 hold state that keeps the UUT branch gates clamped until the board is ready to energize the UUT rails.
 * RESET_ASSERT is an explicit proxy for holding the UUT in reset after rail enable; it is released later than ENABLE_HOLD so the UUT rails can settle first.
 * RESET_HOLD is only a timing proxy for deferred UUT activity and not a proven reconstruction of the exact GA144 RESET- wiring.
@@ -26,8 +26,8 @@ TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA1
 * This case is for power-up fitness and intended test usage only; it does not simulate full GA144 logic or protocol behavior.
 
 ## Generated Artifacts
-* Deck: /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/artifacts/circuit.cir
-* Run log: /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/outputs/run.log
+* Deck: /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup-spi-enabled/artifacts/circuit.cir
+* Run log: /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup-spi-enabled/outputs/run.log
 * Deck contains default models: no
 
 ## Run Status

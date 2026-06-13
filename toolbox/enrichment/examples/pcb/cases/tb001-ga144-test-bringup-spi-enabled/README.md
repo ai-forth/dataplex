@@ -1,15 +1,15 @@
-# TB001 GA144 Test Bring-Up
+# TB001 GA144 Test Bring-Up SPI Enabled
 
 ## Purpose
 
-This case reframes TB001 as a GA144 test fixture rather than only a generic
-power-boundary puzzle.
+This case is the `SPI-enabled` comparison partner to the baseline TB001
+bring-up case.
 
 The smallest useful engineering question is:
 
-Can the board plausibly bring a socketed GA144 UUT into a stable powered state
- for test while keeping the page-1 test-master side on the common `V1P8`
-distribution stable enough to operate SRAM, SPI flash, and control logic?
+If we keep the same power-up and reset timing but flip the `705.17` boot-choice
+proxy low, does the analog picture remain equally plausible for a
+SPI-boot-allowed startup assumption?
 
 This case does **not** attempt to simulate full GA144 digital behavior.
 Instead, it simulates the analog prerequisite for test use:
@@ -39,8 +39,8 @@ These sources support the following working picture:
 * page 5 appears to switch or distribute the UUT-specific `V1P8-Core/UUT`,
   `V1P8-IO/UUT`, and `V1P8-Analog/UUT` branches
 
-This case is now aligned to the explicit candidate operating sequence recorded
-in `test/tb001/ga144-test-sequence.md`.
+This case is aligned to the same candidate operating sequence recorded in
+`test/tb001/ga144-test-sequence.md`, but changes only the boot-choice proxy.
 
 ## Accuracy Window
 
@@ -126,13 +126,14 @@ TB001 test flow:
 7. the later `RESET_ASSERT` release allows `RESET_HOLD` to rise afterward as a
    proxy for deferred test activity
 
-For this specific pass, the abstraction is closest to a `No-Boot` or
-still-held-in-reset interpretation, not a proven SPI-boot execution path.
+For this specific pass, the abstraction is closest to a `SPI-enabled` startup
+assumption, but it still does not simulate real digital boot execution.
 
 Control assumptions:
 
 * `BOOTMODE` is a direct control proxy for the `705.17` boot-choice state seen
-  by the UUT at reset time
+  by the UUT at reset time, and in this case it is driven low to allow the
+  SPI-boot path in principle
 * the page-4/page-5 transistor cluster is abstracted as a UUT-enable hold
   signal plus branch gating behavior
 * `DMN5L06DMK-AB` behavior is represented as the small clamp device that holds
@@ -169,8 +170,8 @@ true in this abstraction:
 
 ## Current Run Result
 
-The current local `ngspice` run is encouraging for the intended test-fixture
-story.
+The current local `ngspice` run should be interpreted as an A/B comparison
+against the `No-Boot` style baseline.
 
 By the end of the transient:
 
@@ -180,7 +181,7 @@ By the end of the transient:
   * `VU2` about `1.793 V`
   * `VU1` about `1.794 V`
   * `VU3` about `1.794 V`
-* `BOOTMODE` stays high in the current `No-Boot` style comparison setup
+* `BOOTMODE` stays low in the current `SPI-enabled` comparison setup
 * `ENABLE_HOLD` releases just after `1.0 ms`, and the UUT rails rise
   immediately afterward
 * `RESET_ASSERT` stays high until just after `2.5 ms`, so reset remains held
@@ -206,10 +207,11 @@ Current interpretation:
   is closer to the intended TB001 hold-then-run startup story
 * the reset proxy now rises much later than before, which makes the deferred
   test-start assumption explicit instead of implicit
-* the current interpretation is closer to a controlled hold-and-release startup
-  than to an already-proven SPI-boot execution story
-* when this case is compared against the `SPI-enabled` proxy variant, the
-  analog rail results are effectively unchanged in the current abstraction
+* the current interpretation is still a controlled hold-and-release startup
+  story, but with the boot-choice proxy set to allow SPI boot at reset time
+* compared against the `No-Boot` baseline, the current analog outputs are
+  effectively unchanged, which is consistent with this model treating boot
+  choice as a logical assumption rather than a rail-loading difference
 * the heaviest UUT branch in this abstraction is the core rail, and it is the
   first place where marginal headroom shows up
 * nothing in this run suggests an obvious catastrophic brownout of the
@@ -224,8 +226,8 @@ power a UUT GA144 in a controlled way for test.
 ## Known Limitations
 
 * This case does not model actual GA144 logic execution.
-* It still does not model `SPI-enabled` startup in a digitally meaningful way;
-  it only provides an explicit boot-choice proxy for later comparison.
+* It still does not model actual SPI transactions or digital boot success; it
+  only provides an explicit boot-choice proxy for comparison.
 * It does not yet prove the exact `FDS6574A` page-5 wiring.
 * It does not include connector or cable effects.
 * It uses datasheet-informed MOS abstractions, not vendor transistor models.
@@ -235,15 +237,15 @@ power a UUT GA144 in a controlled way for test.
 
 ```bash
 cd toolbox/enrichment
-./dist/pcb-sim pipeline --case-dir examples/pcb/cases/tb001-ga144-test-bringup
+./dist/pcb-sim pipeline --case-dir examples/pcb/cases/tb001-ga144-test-bringup-spi-enabled
 ```
 
 ## Next Iteration Targets
 
 * tighten `FDS6574A` and `DMN5L06DMK-AB` model parameters from the local
   datasheets
-* document the baseline-versus-`SPI-enabled` comparison explicitly at the case
-  family level
+* compare the resulting rail and reset timing traces directly against the
+  `No-Boot` baseline and note any meaningful analog differences
 * tune the reset-hold abstraction so domain settle time can be compared against
   a more realistic test-start threshold
 * tighten the relative branch loads once better evidence exists for page-1

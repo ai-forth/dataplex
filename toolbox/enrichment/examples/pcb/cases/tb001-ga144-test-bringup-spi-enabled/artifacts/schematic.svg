@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="4720" viewBox="0 0 1120 4720">
 <rect x="0" y="0" width="1120" height="4720" fill="#f7f4ea"/>
-<text x="80" y="44" font-family="monospace" font-size="28" fill="#1f2933">tb001-ga144-test-bringup</text>
-<text x="80" y="68" font-family="monospace" font-size="14" fill="#52606d">TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA144 test-master side alive while page-4/page-5 control releases three switched UUT-facing 1.8 V domains for a socketed GA144 under test.</text>
+<text x="80" y="44" font-family="monospace" font-size="28" fill="#1f2933">tb001-ga144-test-bringup-spi-enabled</text>
+<text x="80" y="68" font-family="monospace" font-size="14" fill="#52606d">TB001 SPI-enabled bring-up comparison: the same 1.8 V master/UUT rail timing is preserved while the GA144 boot-choice proxy is driven low so reset would see a SPI-boot-allowed startup assumption.</text>
 <circle cx="820" cy="80" r="6" fill="#b83280"/>
 <text x="834" y="85" font-family="monospace" font-size="14" fill="#102a43">VIN_SRC</text>
 <circle cx="820" cy="200" r="6" fill="#b83280"/>
@@ -67,7 +67,7 @@
 <text x="248" y="233" text-anchor="end" font-family="monospace" font-size="12" fill="#334e68">pin2</text>
 <rect x="260" y="291" width="250" height="58" rx="10" fill="#d9e2ec" stroke="#243b53" stroke-width="2"/>
 <text x="272" y="315" font-family="monospace" font-size="14" fill="#102a43">BOOTSEL</text>
-<text x="272" y="335" font-family="monospace" font-size="12" fill="#486581">BOOTSEL DC 3.3</text>
+<text x="272" y="335" font-family="monospace" font-size="12" fill="#486581">BOOTSEL DC 0</text>
 <line x1="510" y1="291" x2="560" y2="291" stroke="#243b53" stroke-width="2"/>
 <line x1="560" y1="291" x2="560" y2="440" stroke="#829ab1" stroke-width="2"/>
 <line x1="560" y1="440" x2="820" y2="440" stroke="#829ab1" stroke-width="2"/>

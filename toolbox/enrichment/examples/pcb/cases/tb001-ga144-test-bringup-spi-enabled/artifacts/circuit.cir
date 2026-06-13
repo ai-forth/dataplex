@@ -1,13 +1,13 @@
-.title tb001-ga144-test-bringup
+.title tb001-ga144-test-bringup-spi-enabled
 
-* TB001 functional bring-up hypothesis: a common 1.8 V source keeps the page-1 GA144 test-master side alive while page-4/page-5 control releases three switched UUT-facing 1.8 V domains for a socketed GA144 under test.
+* TB001 SPI-enabled bring-up comparison: the same 1.8 V master/UUT rail timing is preserved while the GA144 boot-choice proxy is driven low so reset would see a SPI-boot-allowed startup assumption.
 * assumption: The page-1 master side is represented as an always-on 1.8 V branch split into GA144 test-master, SRAM, and SPI flash sub-loads.
 * assumption: The page-2 UUT side is represented as three switched branches: V1P8-Core/UUT, V1P8-IO/UUT, and V1P8-Analog/UUT.
 * assumption: FDS6574A is treated as the stronger N-channel pass family that feeds the UUT branches from the common 1.8 V distribution.
 * assumption: DMN5L06DMK-AB is treated as the smaller N-channel clamp family that holds branch gates low until control release.
 * assumption: A 3.3 V control domain is available to pull the branch gates high enough to pass a 1.8 V rail through an N-channel device abstraction.
 * assumption: This case follows the candidate TB001 operating sequence: master-side rail first, UUT held while control settles, UUT rails enabled, then reset released after settlement.
-* assumption: BOOTMODE is an explicit proxy for the GA144 705.17 boot-choice state at reset; in this current case it is held high to represent a No-Boot-style startup assumption.
+* assumption: BOOTMODE is an explicit proxy for the GA144 705.17 boot-choice state at reset; in this comparison case it is held low to represent a SPI-enabled startup assumption.
 * assumption: ENABLE_HOLD is an explicit proxy for the page-4/page-5 hold state that keeps the UUT branch gates clamped until the board is ready to energize the UUT rails.
 * assumption: RESET_ASSERT is an explicit proxy for holding the UUT in reset after rail enable; it is released later than ENABLE_HOLD so the UUT rails can settle first.
 * assumption: RESET_HOLD is only a timing proxy for deferred UUT activity and not a proven reconstruction of the exact GA144 RESET- wiring.
@@ -18,7 +18,7 @@
 
 VMAIN1P8 VIN_SRC 0 DC 1.8
 VGATEDRV VDRV 0 DC 3.3
-VBOOTSEL BOOTMODE 0 DC 3.3
+VBOOTSEL BOOTMODE 0 DC 0
 VENABLEHOLD ENABLE_HOLD 0 PULSE(3.3 0 1m 20u 20u 20m 40m)
 VRESETASSERT RESET_ASSERT 0 PULSE(3.3 0 2.5m 20u 20u 20m 40m)
 RSRC VIN_SRC VIN_MAIN 0.05
@@ -62,7 +62,7 @@ RANLOAD VAN 0 120
 set filetype=ascii
 tran 20u 12m
 print v(VIN_MAIN) v(VMASTER) v(VU2) v(VU1) v(VU3) v(BOOTMODE) v(ENABLE_HOLD) v(RESET_ASSERT) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN)
-wrdata /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup/outputs/sim.dat v(VIN_MAIN) v(VMASTER) v(VU2) v(VU1) v(VU3) v(BOOTMODE) v(ENABLE_HOLD) v(RESET_ASSERT) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN)
+wrdata /home/cartheur/ame/aiventure/aiventure-github/ai-forth/dataplex/toolbox/enrichment/examples/pcb/cases/tb001-ga144-test-bringup-spi-enabled/outputs/sim.dat v(VIN_MAIN) v(VMASTER) v(VU2) v(VU1) v(VU3) v(BOOTMODE) v(ENABLE_HOLD) v(RESET_ASSERT) v(RESET_HOLD) v(GCORE) v(GIO) v(GAN) v(VCORE) v(VIO) v(VAN)
 quit
 .endc
 
